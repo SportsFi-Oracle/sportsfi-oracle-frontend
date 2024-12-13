@@ -1,0 +1,21 @@
+[
+    {
+      "symbol": "SX",
+      "price": 0.18,
+      "volume_24h": 1200000,
+      "liquidity": 450000
+    },
+    {
+      "symbol": "USDC",
+      "price": 1.00,
+      "volume_24h": 8000000,
+      "liquidity": 15000000
+    },
+    {
+      "symbol": "AX",
+      "price": 0.04,
+      "volume_24h": 700000,
+      "liquidity": 300000
+    }
+  ]
+  
