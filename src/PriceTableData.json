@@ -1,0 +1,18 @@
+[
+    {
+      "symbol": "SX/USDC",
+      "network": "SX Network",
+      "answer": 0.18
+    },
+    {
+      "symbol": "USDC/USD",
+      "network": "Arbitrum",
+      "answer": 1.00
+    },
+    {
+      "symbol": "AX/USDC",
+      "network": "SX Network",
+      "answer": 0.004
+    }
+  ]
+  
