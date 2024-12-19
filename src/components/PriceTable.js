@@ -41,7 +41,7 @@ const PriceTable = ({ data }) => (
       <thead>
         <tr>
           <th>Currency Pair</th>
-          <th>Network)</th>
+          <th>Network</th>
           <th>Answer</th>
           <th>Heartbeat</th>
         </tr>
@@ -50,9 +50,9 @@ const PriceTable = ({ data }) => (
         {data.map((asset) => (
           <tr key={asset.symbol}>
             <td>{asset.symbol}</td>
-            <td>${asset.price.toFixed(2)}</td>
-            <td>${asset.volume_24h.toLocaleString()}</td>
-            <td>${asset.liquidity.toLocaleString()}</td>
+            <td>{asset.network.toLocaleString()}</td>
+            <td>${asset.answer.toFixed(2)}</td>
+            {/* <td>${asset.liquidity.toLocaleString()}</td> */}
           </tr>
         ))}
       </tbody>
