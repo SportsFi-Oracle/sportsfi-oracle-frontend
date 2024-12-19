@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles";
-import { fetchAssetData } from "./api";
+import { fetchAssetData, fetchPriceTableData } from "./api";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AssetCard from "./components/AssetCard";
@@ -26,13 +26,16 @@ const GridWrapper = styled.div`
 
 const App = () => {
   const [assets, setAssets] = useState([]);
+  const [priceTableData, setPriceTableData] = useState([]);
   const [globalStats, setGlobalStats] = useState({ totalVolume: 0, totalLiquidity: 0 });
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAssetData();
+      const priceData = await fetchPriceTableData();
       setAssets(data);
+      setPriceTableData(priceData);
 
       // Aggregate global stats
       const totalVolume = data.reduce((sum, asset) => sum + asset.volume_24h, 0);
@@ -69,7 +72,7 @@ const App = () => {
             />
           ))}
         </GridWrapper>
-        <PriceTable data={assets} />
+        <PriceTable data={priceTableData} />
         </AppWrapper>
       <Footer />
     </ThemeProvider>
