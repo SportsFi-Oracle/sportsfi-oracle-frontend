@@ -1,83 +1,67 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import styled from "styled-components";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from "chart.js";
-  
-  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-  
 
 const ChartWrapper = styled.div`
-  width: 100%;
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
+  height: 500px; /* Increase height */
   background: ${({ theme }) => theme.cardBg};
-  border: 1px solid ${({ theme }) => theme.cardBorder};
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const PriceChart = ({ data }) => {
+const chartData = {
+  labels: ["10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM"],
+  datasets: [
+    {
+      label: "Price",
+      data: [1.0, 1.02, 1.01, 1.03, 1.04, 1.02],
+      borderColor: "#00aaff",
+      backgroundColor: "rgba(0, 170, 255, 0.2)",
+      pointRadius: 5,
+      pointHoverRadius: 7,
+      borderWidth: 3,
+      tension: 0.4, // Smooth curves
+    },
+  ],
+};
 
-  const chartData = {
-    labels: data.map((entry) => entry.time),
-    datasets: [
-      {
-        label: "Price",
-        data: data.map((entry) => entry.price),
-        fill: true,
-        backgroundColor: "rgba(138, 43, 226, 0.2)", // Gradient fill
-        borderColor: "#8a2be2",
-        pointRadius: 4,
-        pointBackgroundColor: "#fff",
-        pointBorderColor: "#8a2be2",
-      },
-    ],
-  };
-  
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        enabled: true,
-        callbacks: {
-          label: (context) => `$${context.raw.toFixed(2)}`,
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      labels: {
+        color: "#ffffff", // Legend text color
+        font: {
+          size: 14,
         },
       },
     },
-    elements: {
-      line: {
-        tension: 0.4, // Add smooth curve
-      },
+    tooltip: {
+      backgroundColor: "#333333",
+      titleColor: "#ffffff",
+      bodyColor: "#ffffff",
     },
-    scales: {
-      x: {
-        grid: { color: "rgba(255, 255, 255, 0.1)" },
-        ticks: { color: "#e0e0e0" },
-      },
-      y: {
-        grid: { color: "rgba(255, 255, 255, 0.1)" },
-        ticks: { color: "#e0e0e0" },
-      },
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      ticks: { color: "#cccccc" },
     },
-  };
-  
-  
+    y: {
+      grid: { color: "rgba(200, 200, 200, 0.2)" },
+      ticks: { color: "#cccccc" },
+    },
+  },
+};
 
+const PriceChart = () => {
   return (
     <ChartWrapper>
-      <Line data={chartData} options={options} />
+      <Line data={chartData} options={chartOptions} />
     </ChartWrapper>
   );
 };
