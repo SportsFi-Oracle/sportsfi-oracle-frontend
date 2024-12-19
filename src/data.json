@@ -1,6 +1,6 @@
 [
     {
-      "symbol": "SX",
+      "symbol": "SX/USDC",
       "price": 0.18,
       "volume_24h": 1200000,
       "liquidity": 450000
@@ -12,7 +12,7 @@
       "liquidity": 15000000
     },
     {
-      "symbol": "AX",
+      "symbol": "AX/USDC",
       "price": 0.04,
       "volume_24h": 700000,
       "liquidity": 300000

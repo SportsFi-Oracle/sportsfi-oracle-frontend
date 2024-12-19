@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import AssetCard from "./components/AssetCard";
 import GlobalStats from "./components/GlobalStats";
 import PriceChart from "./components/PriceChart";
+import PriceTable from "./components/PriceTable";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -68,8 +69,8 @@ const App = () => {
             />
           ))}
         </GridWrapper>
-        <PriceChart data={chartData} />
-      </AppWrapper>
+        <PriceTable data={assets} />
+        </AppWrapper>
       <Footer />
     </ThemeProvider>
   );

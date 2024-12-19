@@ -17,21 +17,54 @@ const bounce = keyframes`
 
 const Card = styled.div`
   background: ${({ theme }) => theme.cardBg};
-  border: 1px solid ${({ theme }) => theme.cardBorder};
-  border-radius: 15px;
+  border: 1px solid ${({ theme }) => theme.border};
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   padding: 20px;
-  margin: 15px;
+  margin: 10px;
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: ${bounce} 0.5s ease-in-out;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    background: rgba(255, 255, 255, 0.1);
+  h2 {
+    color: ${({ theme }) => theme.primary};
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  p {
+    color: ${({ theme }) => theme.textLight};
+    font-size: 16px;
+    margin: 5px 0;
   }
 `;
+
+const Icon = styled.div`
+  font-size: 28px;
+  color: ${({ theme }) => theme.accent};
+  margin-bottom: 10px;
+`;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+
+  th, td {
+    border: 1px solid ${({ theme }) => theme.border};
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  th {
+    background: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.textDark};
+    font-weight: 700;
+  }
+
+  td {
+    color: ${({ theme }) => theme.textLight};
+  }
+`;
+
 
 
 const Title = styled.h2`

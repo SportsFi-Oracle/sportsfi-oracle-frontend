@@ -2,21 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
-  background: linear-gradient(90deg, #6e85d3, #8a2be2);
-  padding: 20px;
+  background: linear-gradient(90deg, #2a5bd7, #4c51bf);
+  color: #ffffff;
   text-align: center;
-  font-size: 32px;
+  padding: 20px;
+  font-size: 24px;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 
 
-
 const Header = () => {
-  return <HeaderWrapper>SportsFi Token Prices</HeaderWrapper>;
+  return <HeaderWrapper>Decentralized Price Oracles for SX Network</HeaderWrapper>;
 };
 
 export default Header;

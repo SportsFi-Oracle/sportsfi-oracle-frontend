@@ -15,10 +15,12 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const theme = {
-  primary: "#8a2be2", // Vibrant purple
-  secondary: "#6e85d3", // Soft blue
-  accent: "#28a745", // Subtle green accent
-  text: "#e0e0e0",
-  cardBg: "rgba(255, 255, 255, 0.08)",
-  cardBorder: "rgba(255, 255, 255, 0.15)",
+  primary: "#2a5bd7", // Chainlink Blue
+  secondary: "#f5f7fa", // Light gray background
+  textDark: "#1f1f1f",
+  textLight: "#6b6b6b",
+  accent: "#8a2be2", // Purple accent
+  cardBg: "#ffffff", // White cards
+  border: "rgba(0, 0, 0, 0.1)",
 };
+
