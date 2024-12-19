@@ -10,7 +10,7 @@ const FooterWrapper = styled.div`
 `;
 
 const Footer = () => (
-  <FooterWrapper>© 2024 SportsFi. All Rights Reserved.</FooterWrapper>
+  <FooterWrapper>© 2024 Prediction Labs. All Rights Reserved.</FooterWrapper>
 );
 
 export default Footer;
