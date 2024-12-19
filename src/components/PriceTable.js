@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const TableWrapper = styled.div`
@@ -14,7 +15,8 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 
-  th, td {
+  th,
+  td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid ${({ theme }) => theme.border};
@@ -30,34 +32,59 @@ const Table = styled.table`
     color: ${({ theme }) => theme.textLight};
   }
 
-  tr:hover {
-    background: ${({ theme }) => theme.hover};
+  tr {
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: ${({ theme }) => theme.hover};
+    }
+
+    &.clicked {
+      background: ${({ theme }) => theme.primary};
+      color: ${({ theme }) => theme.textLight};
+    }
   }
 `;
 
-const PriceTable = ({ data }) => (
-  <TableWrapper>
-    <Table>
-      <thead>
-        <tr>
-          <th>Currency Pair</th>
-          <th>Network</th>
-          <th>Answer</th>
-          <th>Heartbeat</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((asset) => (
-          <tr key={asset.symbol}>
-            <td>{asset.symbol}</td>
-            <td>{asset.network.toLocaleString()}</td>
-            <td>${asset.answer.toFixed(2)}</td>
-            {/* <td>${asset.liquidity.toLocaleString()}</td> */}
+const PriceTable = ({ data }) => {
+  const navigate = useNavigate();
+  const [clickedRow, setClickedRow] = useState(null);
+
+  const handleRowClick = (symbol) => {
+    setClickedRow(symbol); // Track which row is clicked
+    console.log("Navigating to:", `/token/${symbol}`); // Debugging output
+    navigate(`/token/${symbol}`);
+    };
+
+  return (
+    <TableWrapper>
+      <Table>
+        <thead>
+          <tr>
+            <th>Currency Pair</th>
+            <th>Network</th>
+            <th>Answer</th>
+            <th>Last Updated</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
-  </TableWrapper>
-);
+        </thead>
+        <tbody>
+          {data.map((asset) => (
+            <tr
+              key={asset.symbol}
+              onClick={() => handleRowClick(asset.symbol)}
+              className={clickedRow === asset.symbol ? "clicked" : ""}
+            >
+              <td>{asset.symbol}</td>
+              <td>{asset.network}</td>
+              <td>${asset.answer.toFixed(2)}</td>
+              <td>{asset.heartbeat}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </TableWrapper>
+  );
+};
 
 export default PriceTable;
